@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<a href="/logout">Logout</a>
+
+<br><br>
+
+<a href="/">All</a>
+<a href="/?category=fruit">Fruit</a>
+<a href="/?category=vegetables">Vegetables</a>
+<a href="/?category=redMeat">Red Meat</a>
+<a href="/?category=poultryFish">Poultry/Fish</a>
+<a href="/?category=dairy">Dairy</a>
+<a href="/?category=goodCarbs">Good Carbs</a>
+<a href="/?category=badCarbs">Bad Carbs</a>
+<a href="/?category=beverages">Beverages</a>
+<a href="/?category=other">Other</a>
+
+<br><br>
+
+<form action="/" method="get">
+    <input type="text" placeholder="Search" name="search"/>
+    <button type="submit">Search</button>
+</form>
+
+<br><br>
+
+<form action="add-grocery" method="post">
+    <input type="text" placeholder="Name" name="name"/>
+    <input type="text" placeholder="Brand" name="brand"/>
+    <input type="number" step="0.01" min=0 placeholder="Quantity" name="quantity"/>
+    <select name="quantityType">
+        <option selected="true" disabled="disabled">Select Quantity Type:</option>
+        <option value="Ounce(s)"/>Ounce(s)</option>
+        <option value="Teaspoon(s)"/>Teaspoon(s)</option>
+        <option value="Tablespoon(s)"/>Tablespoon(s)</option>
+        <option value="Cup(s)"/>Cup(s)</option>
+        <option value="Pint(s)"/>Pint(s)</option>
+        <option value="Liter(s)"/>Liter(s)</option>
+        <option value="Quart(s)"/>Quart(s)</option>
+        <option value="Gallon(s)"/>Gallon(s)</option>
+        <option value="Pound(s)"/>Pound(s)</option>
+        <option value="Other"/>Other</option>
+    </select>
+    <select name="category">
+        <option selected="true" disabled="disabled">Select Category:</option>
+        <option value="Fruits"/>Fruit</option>
+        <option value="Vegetables"/>Vegetable</option>
+        <option value="Red Meat"/>Red Meat</option>
+        <option value="Poultry/Fish"/>Poultry/Fish</option>
+        <option value="Dairy"/>Dairy</option>
+        <option value="Good Carb"/>Good Carb</option>
+        <option value="Bad Carb"/>Bad Carb</option>
+        <option value="Beverages"/>Beverage</option>
+        <option value="Seasoning"/>Seasoning</option>
+        <option value="Other"/>Other</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+<br><br>
+
+<table>
+
+    <tr>
+        <td>Name</td>
+        <td>Brand</td>
+        <td>Quantity</td>
+        <td>Quantity Type</td>
+        <td>Category</td>
+    </tr>
+
+    {{#groceries}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{brand}}</td>
+        <td>{{quantity}}</td>
+        <td>{{quantityType}}</td>
+        <td>{{category}}</td>
+    </tr>
+    {{/groceries}}
+
+</table>
+
+<br>
+
+{{^groceries}}
+No groceries to display
+{{/groceries}}
+
+</body>
+</html>
