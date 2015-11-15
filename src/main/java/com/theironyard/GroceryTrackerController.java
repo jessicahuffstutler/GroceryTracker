@@ -21,13 +21,20 @@ public class GroceryTrackerController {
     GroceryRepository groceries;
 
     @RequestMapping("/")
-    public String home(HttpSession session, Model model) {
+    public String home(HttpSession session, Model model, String search, String category) {
         String username = (String) session.getAttribute("username");
 
         if (username == null) {
             return "login";
         }
-        model.addAttribute("groceries", groceries.findAll());
+
+        if (category != null) {
+            model.addAttribute("groceries", groceries.findByCategoryOrderByNameAsc(category));
+        } else if (search != null) {
+            model.addAttribute("groceries", groceries.searchByName(search));
+        } else {
+            model.addAttribute("groceries", groceries.findAll());
+        }
         return "home";
     }
 
