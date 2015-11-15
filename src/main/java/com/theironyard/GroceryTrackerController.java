@@ -74,18 +74,35 @@ public class GroceryTrackerController {
         return "redirect:/";
     }
 
+    @RequestMapping("/options")
+    public String options(
+            HttpSession session,
+            Model model,
+            Integer id
+    ) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new Exception("Not logged in.");
+        }
+        User user = users.findOneByUsername(username);
+
+        model.addAttribute("groceries", groceries.findOne(id));
+        model.addAttribute("id", id);
+        return "edit";
+    }
+
     @RequestMapping("/edit-grocery")
     public String editGrocery(
             HttpSession session,
             Integer id,
-            String username,
             String name,
             String brand,
             double quantity,
             String quantityType,
             String category
     ) throws Exception {
-        if (session.getAttribute("username") == null) {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
             throw new Exception("Not logged in.");
         }
         User user = users.findOneByUsername(username);

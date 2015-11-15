@@ -6,5 +6,57 @@
 </head>
 <body>
 
+<br>
+
+<form action="edit-grocery?id={{id}}" method="post">
+    <input type="text" placeholder="Update Name" name="name"/>
+    <input type="text" placeholder="Update Brand" name="brand"/>
+    <input type="number" step="0.01" min=0 placeholder="Update Quantity" name="quantity"/>
+    <select name="quantityType">
+        <option selected="true" disabled="disabled">Select Quantity Type:</option>
+        <option value="Ounce(s)"/>Ounce(s)</option>
+        <option value="Teaspoon(s)"/>Teaspoon(s)</option>
+        <option value="Tablespoon(s)"/>Tablespoon(s)</option>
+        <option value="Cup(s)"/>Cup(s)</option>
+        <option value="Pint(s)"/>Pint(s)</option>
+        <option value="Liter(s)"/>Liter(s)</option>
+        <option value="Quart(s)"/>Quart(s)</option>
+        <option value="Gallon(s)"/>Gallon(s)</option>
+        <option value="Pound(s)"/>Pound(s)</option>
+        <option value="Other"/>Other</option>
+    </select>
+    <select name="category">
+        <option selected="true" disabled="disabled">Select Category:</option>
+        <option value="Fruits"/>Fruit</option>
+        <option value="Vegetables"/>Vegetable</option>
+        <option value="Red Meat"/>Red Meat</option>
+        <option value="Poultry/Fish"/>Poultry/Fish</option>
+        <option value="Dairy"/>Dairy</option>
+        <option value="Good Carb"/>Good Carb</option>
+        <option value="Bad Carb"/>Bad Carb</option>
+        <option value="Beverages"/>Beverage</option>
+        <option value="Seasoning"/>Seasoning</option>
+        <option value="Other"/>Other</option>
+    </select>
+    <button type="submit">Edit</button>
+</form><br><br>
+
+Item Details
+
+<br><br>
+
+{{#groceries}}
+Name: {{name}}<br>
+Brand: {{brand}}<br>
+Quantity: {{quantity}}<br>
+Quantity Type: {{quantityType}}<br>
+Category: {{category}}<br>
+{{/groceries}}
+
+<form action="delete-grocery?id={{id}}" method="post">
+    <input type="hidden" name="id" value="{{id}}"/>
+    <button type="submit">Delete</button>
+</form>
+
 </body>
 </html>
