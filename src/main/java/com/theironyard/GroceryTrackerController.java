@@ -104,7 +104,7 @@ public class GroceryTrackerController {
             Integer id,
             String name,
             String brand,
-            double quantity,
+            Double quantity,
             String quantityType,
             String category
     ) throws Exception {
@@ -115,11 +115,26 @@ public class GroceryTrackerController {
         User user = users.findOneByUsername(username);
 
         Grocery grocery = groceries.findOne(id);
-        grocery.name = name;
-        grocery.brand = brand;
-        grocery.quantity = quantity;
-        grocery.quantityType = quantityType;
-        grocery.category = category;
+        if (name != "") {
+            grocery.name = name;
+        }
+
+        if (brand != "") {
+            grocery.brand = brand;
+        }
+
+        if (quantity != null) {
+            grocery.quantity = quantity;
+        }
+
+        if (quantityType != null) {
+            grocery.quantityType = quantityType;
+        }
+
+        if (category != null) {
+            grocery.category = category;
+        }
+
         grocery.user = user;
         groceries.save(grocery);
 
