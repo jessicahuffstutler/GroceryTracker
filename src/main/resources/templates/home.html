@@ -6,10 +6,11 @@
 </head>
 <body>
 
-<a href="/logout">Logout</a>
+<a href="/">Home</a> <a href="/logout">Logout</a>
 
 <br><br>
 
+<!-- Replaced with the selection form below
 Filter: <a href="/">All</a>
 <a href="/?category=Fruit">Fruits</a>
 <a href="/?category=Vegetable">Vegetables</a>
@@ -21,12 +22,30 @@ Filter: <a href="/">All</a>
 <a href="/?category=Beverage">Beverages</a>
 <a href="/?category=Seasoning">Seasoning</a>
 <a href="/?category=Other">Other</a>
+//-->
+
+<form action="/" method="get">
+    <select name="category">
+        <option selected="true" disabled="disabled">Filter By Category:</option>
+        <option value="Fruit"/>Fruits</option>
+        <option value="Vegetable"/>Vegetables</option>
+        <option value="Red Meat"/>Red Meat</option>
+        <option value="Poultry/Fish"/>Poultry/Fish</option>
+        <option value="Dairy"/>Dairy</option>
+        <option value="Good Carb"/>Good Carbs</option>
+        <option value="Bad Carb"/>Bad Carbs</option>
+        <option value="Beverage"/>Beverages</option>
+        <option value="Seasoning"/>Seasoning</option>
+        <option value="Other"/>Other</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
 
 <br><br>
 
 <form action="/" method="get">
-    <input type="text" placeholder="Search" name="search"/>
-    <button type="submit">Search by Name</button>
+    <input type="text" placeholder="Search by Name" name="search"/>
+    <button type="submit">Search</button>
 </form>
 
 <br><br>
