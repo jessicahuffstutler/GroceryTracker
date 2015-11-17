@@ -32,7 +32,7 @@ public class GroceryTrackerApplicationTests {
 
 	MockMvc mockMvc;
 
-	@Before
+	@Before //runs before each test and therefore would make it difficult to test edit and delete functions.
 	public void before() {
 		groceries.deleteAll();
 		users.deleteAll();
@@ -64,5 +64,9 @@ public class GroceryTrackerApplicationTests {
 
 		assertTrue(groceries.count() == 1);
 	}
+
+	//test edit
+
+	//test delete
 
 }
